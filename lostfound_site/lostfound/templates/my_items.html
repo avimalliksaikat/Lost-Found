@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Lost Items</h2>
+
+{% for item in lost_items %}
+<div class="card p-2 mb-2">
+<b>{{ item.type }}</b> - {{ item.description }}
+</div>
+{% empty %}
+<p>No lost items</p>
+{% endfor %}
+
+
+<h2 class="mt-4">My Found Items</h2>
+
+{% for item in found_items %}
+<div class="card p-2 mb-2">
+<b>{{ item.type }}</b> - {{ item.description }}
+</div>
+{% empty %}
+<p>No found items</p>
+{% endfor %}
+
+{% endblock %}

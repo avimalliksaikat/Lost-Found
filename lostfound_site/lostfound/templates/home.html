@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="text-center mb-4">
+    <h1 class="fw-bold">Lost & Found Portal</h1>
+    <p class="text-muted">Report lost items or help others recover theirs</p>
+</div>
+
+<div class="card shadow p-4 mb-4">
+    <form action="/search/" method="get">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search lost or found items...">
+            <button class="btn btn-primary">Search</button>
+        </div>
+    </form>
+</div>
+
+<div class="row text-center">
+
+<div class="col-md-4">
+<div class="card shadow p-4">
+<h4>Lost Something?</h4>
+<p>Report your lost item</p>
+<a href="/add-lost/" class="btn btn-danger">Add Lost Item</a>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card shadow p-4">
+<h4>Found Something?</h4>
+<p>Help return to owner</p>
+<a href="/add-found/" class="btn btn-success">Add Found Item</a>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card shadow p-4">
+<h4>Browse Items</h4>
+<p>View all items</p>
+<a href="/view/" class="btn btn-primary">View Items</a>
+</div>
+</div>
+
+</div>
+
+{% endblock %}
