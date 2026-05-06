@@ -7,6 +7,9 @@
     <p class="text-muted">Report lost items or help others recover theirs</p>
 </div>
 
+<!-- Search is available for everyone -->
+{% if user.is_authenticated %}
+
 <div class="card shadow p-4 mb-4">
     <form action="/search/" method="get">
         <div class="input-group">
@@ -16,32 +19,49 @@
     </form>
 </div>
 
+{% endif %}
+
+{% if user.is_authenticated %}
+
+<!-- Logged-in users -->
 <div class="row text-center">
 
-<div class="col-md-4">
-<div class="card shadow p-4">
-<h4>Lost Something?</h4>
-<p>Report your lost item</p>
-<a href="/add-lost/" class="btn btn-danger">Add Lost Item</a>
-</div>
+    <div class="col-md-4">
+        <div class="card shadow p-4">
+            <h4>Lost Something?</h4>
+            <p>Report your lost item</p>
+            <a href="/add-lost/" class="btn btn-danger">Add Lost Item</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow p-4">
+            <h4>Found Something?</h4>
+            <p>Help return to owner</p>
+            <a href="/add-found/" class="btn btn-success">Add Found Item</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow p-4">
+            <h4>Browse Items</h4>
+            <p>View all items</p>
+            <a href="/view/" class="btn btn-primary">View Items</a>
+        </div>
+    </div>
+
 </div>
 
-<div class="col-md-4">
-<div class="card shadow p-4">
-<h4>Found Something?</h4>
-<p>Help return to owner</p>
-<a href="/add-found/" class="btn btn-success">Add Found Item</a>
-</div>
+{% else %}
+
+<!-- Logged-out users -->
+<div class="text-center mt-5">
+    <h4>Please login to use the system</h4>
+    <p class="text-muted">You need an account to add or manage items</p>
+    <a href="/login/" class="btn btn-primary me-2">Login</a>
+    <a href="/register/" class="btn btn-success">Register</a>
 </div>
 
-<div class="col-md-4">
-<div class="card shadow p-4">
-<h4>Browse Items</h4>
-<p>View all items</p>
-<a href="/view/" class="btn btn-primary">View Items</a>
-</div>
-</div>
-
-</div>
+{% endif %}
 
 {% endblock %}
